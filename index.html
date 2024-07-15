@@ -120,7 +120,7 @@
     </style>
     <script>
         function sendToWhatsApp(productName, productPrice, productLink) {
-            var phoneNumber = "+9940552163114"; // WhatsApp nömrənizi daxil edin
+            var phoneNumber = "994XXXXXXXXX"; // WhatsApp nömrənizi daxil edin
             var message = "Salam, mən " + productName + " adlı məhsulu sifariş etmək istəyirəm. Məhsulun linki: " + productLink;
             var url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
@@ -130,9 +130,9 @@
 <body>
     <div class="carousel-container">
         <div class="carousel-wrapper">
-            <div class="product-card">
+            <div class="product-card" data-link="https://example.com/product-link-1">
                 <div class="image-container">
-                    <img src="sekil 1.jpg" alt="Məhsulun Şəkli" class="product-image">
+                    <img src="sekil1.jpg" alt="Məhsulun Şəkli" class="product-image">
                     <div class="heart-icon"></div>
                     <div class="product-prices">
                         <span class="current-price">50 AZN</span>
@@ -149,7 +149,33 @@
                         <span class="star">★</span>
                         <span class="star">☆</span>
                     </div>
-                    <div class="add-to-cart" onclick="sendToWhatsApp('Məhsulun Adı 1', '50 AZN', 'https://example.com/product-link')">
+                    <div class="add-to-cart" onclick="sendToWhatsApp('Məhsulun Adı 1', '50 AZN', this.closest('.product-card').getAttribute('data-link'))">
+                        Səbətə Əlavə Et <span class="cart-icon">➔</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Burada digər məhsul kartları əlavə edə bilərsiniz -->
+            <div class="product-card" data-link="https://example.com/product-link-2">
+                <div class="image-container">
+                    <img src="sekil2.jpg" alt="Məhsulun Şəkli" class="product-image">
+                    <div class="heart-icon"></div>
+                    <div class="product-prices">
+                        <span class="current-price">60 AZN</span>
+                        <span class="old-price">80 AZN</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-name">Məhsulun Adı 2</h2>
+                    <p class="product-description">Məhsul haqqında qısa məlumat.</p>
+                    <div class="product-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">☆</span>
+                    </div>
+                    <div class="add-to-cart" onclick="sendToWhatsApp('Məhsulun Adı 2', '60 AZN', this.closest('.product-card').getAttribute('data-link'))">
                         Səbətə Əlavə Et <span class="cart-icon">➔</span>
                     </div>
                 </div>
